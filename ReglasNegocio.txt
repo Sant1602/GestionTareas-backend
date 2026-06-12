@@ -1,0 +1,55 @@
+Reglas de negocio para usuarios
+🔹 Validaciones de creación / registro ✅
+
+- No permitir usuarios menores de 18 años. ✅
+- El email debe ser único en la base de datos. ✅
+- La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un número. ✅
+- El nombre de usuario no puede contener caracteres especiales. ✅
+- Registrar automáticamente la fecha de creación (createdAt) y última actualización (updatedAt). ✅
+
+🔹 Validaciones de actualización ✅ 
+
+- No permitir cambiar el correo a uno que ya exista en otro usuario. ✅
+- Solo usuarios con rol “ADMIN” pueden cambiar roles de otros usuarios. ✅
+- No permitir que un usuario se auto-asigne el rol “ADMIN”. ✅
+- Si se actualiza la contraseña, registrar la fecha de cambio (passwordChangedAt). ✅
+- Bloquear actualización si el usuario está deshabilitado (active = false). ✅
+
+🔹 Validaciones de eliminación / estado
+
+- No se puede eliminar usuarios con rol “ADMIN”. ✅
+- No se puede eliminar un usuario que tenga tareas o registros asociados (simula integridad referencial). ✅
+- Solo un administrador puede activar o desactivar usuarios. ✅
+- No permitir que un usuario se desactive a sí mismo.
+
+🔹 Reglas avanzadas / opcionales
+
+- Crear login con token de autenticacion ✅
+- Crear sistema que permita a un usuario tener una session unica ✅
+- Limitar a X el número de usuarios activos simultáneamente.
+- Bloquear usuarios temporalmente después de 5 intentos fallidos de login. 
+- Mantener un historial de cambios de datos sensibles (audit log).
+- No permitir que un email usado antes pueda registrarse nuevamente durante 6 meses.
+- Validar que el teléfono tenga un formato correcto según país.
+- Verificar que la combinación de nombre + apellido sea única (opcional).
+
+ 🔹 Crear un repositorio genérico GenericRepository<T> para operaciones CRUD.
+
+- Implementar un servicio base BaseService<T> reutilizable.
+- Crear una clase de respuesta genérica ApiResponse<T> para la API.
+- Implementar manejo de paginación genérica (Page<T> o similar).
+- Reutilizar validaciones mediante clases o utilidades genéricas.
+
+🔹 Extras / mejoras
+
+- Implementar SoftDelete global (reemplazar delete físico).
+- Crear sistema de auditoría (audit log).
+- Manejar paginación y filtros en endpoints.
+- Documentar API con Swagger/OpenAPI.
+
+Tareas pendientes
+
+- Hacer SoftDelete en vez de Delete total
+- Corregir la relacion entre Usuarios y Proyectos
+
+
