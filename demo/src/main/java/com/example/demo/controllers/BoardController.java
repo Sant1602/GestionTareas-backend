@@ -19,7 +19,7 @@ import com.example.demo.Dto.Boards.BoardResponseDto;
 import com.example.demo.services.IBoardService;
 
 @RestController
-@RequestMapping("/boards")
+@RequestMapping("/board")
 public class BoardController {
     private final IBoardService boardService;
 
